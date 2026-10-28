@@ -206,11 +206,15 @@ document.querySelectorAll('.chip').forEach((chip) => {
 });
 
 function setFilter(status) {
+    activateFilter(status);
+    renderTasks();
+}
+
+function activateFilter(status) {
     state.filter = status;
     document.querySelectorAll('.chip').forEach((chip) => {
         chip.classList.toggle('is-active', chip.dataset.status === status);
     });
-    renderTasks();
 }
 
 /* ---------- 新建任务 ---------- */
@@ -283,6 +287,7 @@ els.form.addEventListener('submit', async (event) => {
         }
         els.dialog.close();
         toast('任务已创建');
+        activateFilter('ALL');
         await load({ silent: true });
     } catch (error) {
         toast(error.message || '创建失败，请稍后重试');
