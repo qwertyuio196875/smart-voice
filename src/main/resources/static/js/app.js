@@ -205,6 +205,13 @@ document.querySelectorAll('.chip').forEach((chip) => {
     chip.addEventListener('click', () => setFilter(chip.dataset.status));
 });
 
+document.querySelectorAll('.stat-card[data-status]').forEach((card) => {
+    card.addEventListener('click', () => {
+        const status = card.dataset.status;
+        setFilter(status === state.filter ? 'ALL' : status);
+    });
+});
+
 function setFilter(status) {
     activateFilter(status);
     renderTasks();
@@ -213,7 +220,14 @@ function setFilter(status) {
 function activateFilter(status) {
     state.filter = status;
     document.querySelectorAll('.chip').forEach((chip) => {
-        chip.classList.toggle('is-active', chip.dataset.status === status);
+        const active = chip.dataset.status === status;
+        chip.classList.toggle('is-active', active);
+        chip.setAttribute('aria-pressed', String(active));
+    });
+    document.querySelectorAll('.stat-card[data-status]').forEach((card) => {
+        const active = card.dataset.status === status;
+        card.classList.toggle('is-active', active);
+        card.setAttribute('aria-pressed', String(active));
     });
 }
 
