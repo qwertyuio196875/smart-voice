@@ -2,6 +2,16 @@
 
 一个用 Java 实现的单页看板：展示自动外呼任务的执行情况，支持按状态筛选与新建任务。
 
+**仓库**：<https://github.com/qwertyuio196875/smart-voice> · 提交说明见 [`SUBMISSION.md`](SUBMISSION.md)
+
+## 截图
+
+![主界面](docs/screenshots/dashboard.jpg)
+
+| 新建任务 | 筛选空态 | 错误态 |
+| --- | --- | --- |
+| ![新建任务](docs/screenshots/create-task-modal.jpg) | ![筛选空态](docs/screenshots/empty-filter.jpg) | ![错误态](docs/screenshots/error-state.jpg) |
+
 ## 运行
 
 ```bash
